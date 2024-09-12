@@ -6,11 +6,8 @@ if (caseSlider) {
   var swiperNextEl = document.querySelector('.case .swiper-button-next');
   var swiperPrevEl = document.querySelector('.case .swiper-button-prev');
   var swiper = new Swiper(caseSlider, {
-    slidesPerView: 3,
-    grid: {
-      rows: 2
-    },
-    spaceBetween: 30,
+    slidesPerView: 5,
+    spaceBetween: 20,
     pagination: {
       el: swiperPagination,
       clickable: true
@@ -18,6 +15,23 @@ if (caseSlider) {
     navigation: {
       nextEl: swiperNextEl,
       prevEl: swiperPrevEl
+    },
+    breakpoints: {
+      1241: {
+        slidesPerView: 5
+      },
+      992: {
+        slidesPerView: 4
+      },
+      749: {
+        slidesPerView: 3
+      },
+      479: {
+        slidesPerView: 2
+      },
+      300: {
+        slidesPerView: 1
+      }
     }
   });
 }
@@ -43,6 +57,9 @@ if (diplomsSlider) {
 }
 "use strict";
 
+function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
 var popupOpenButtons = document.querySelectorAll('[data-popup-open]');
 popupOpenButtons.forEach(function (popupBtn) {
   popupBtn.addEventListener('click', function () {
@@ -113,6 +130,94 @@ if (reviewsSliderPopup && reviewsItems.length) {
     });
   });
 }
+document.addEventListener('DOMContentLoaded', function () {
+  var phoneInputs = document.querySelectorAll('input[data-tel-input]');
+  var getInputNumbersValue = function getInputNumbersValue(input) {
+    // Return stripped input value — just numbers
+    return input.value.replace(/\D/g, '');
+  };
+  var onPhonePaste = function onPhonePaste(e) {
+    var input = e.target,
+      inputNumbersValue = getInputNumbersValue(input);
+    var pasted = e.clipboardData || window.clipboardData;
+    if (pasted) {
+      var pastedText = pasted.getData('Text');
+      if (/\D/g.test(pastedText)) {
+        // Attempt to paste non-numeric symbol — remove all non-numeric symbols,
+        // formatting will be in onPhoneInput handler
+        input.value = inputNumbersValue;
+        return;
+      }
+    }
+  };
+  var onPhoneInput = function onPhoneInput(e) {
+    var input = e.target,
+      inputNumbersValue = getInputNumbersValue(input),
+      selectionStart = input.selectionStart,
+      formattedInputValue = '';
+    if (!inputNumbersValue) {
+      return input.value = '';
+    }
+    if (input.value.length != selectionStart) {
+      // Editing in the middle of input, not last symbol
+      if (e.data && /\D/g.test(e.data)) {
+        // Attempt to input non-numeric symbol
+        input.value = inputNumbersValue;
+      }
+      return;
+    }
+    if (['7', '8', '9'].indexOf(inputNumbersValue[0]) > -1) {
+      if (inputNumbersValue[0] == '9') inputNumbersValue = '7' + inputNumbersValue;
+      var firstSymbols = inputNumbersValue[0] == '8' ? '8' : '+7';
+      formattedInputValue = input.value = firstSymbols + ' ';
+      if (inputNumbersValue.length > 1) {
+        formattedInputValue += '(' + inputNumbersValue.substring(1, 4);
+      }
+      if (inputNumbersValue.length >= 5) {
+        formattedInputValue += ') ' + inputNumbersValue.substring(4, 7);
+      }
+      if (inputNumbersValue.length >= 8) {
+        formattedInputValue += '-' + inputNumbersValue.substring(7, 9);
+      }
+      if (inputNumbersValue.length >= 10) {
+        formattedInputValue += '-' + inputNumbersValue.substring(9, 11);
+      }
+    } else {
+      formattedInputValue = '+' + inputNumbersValue.substring(0, 16);
+    }
+    input.value = formattedInputValue;
+  };
+  var onPhoneKeyDown = function onPhoneKeyDown(e) {
+    // Clear input after remove last symbol
+    var inputValue = e.target.value.replace(/\D/g, '');
+    if (e.keyCode == 8 && inputValue.length == 1) {
+      e.target.value = '';
+    }
+  };
+  var _iterator = _createForOfIteratorHelper(phoneInputs),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var phoneInput = _step.value;
+      phoneInput.addEventListener('keydown', onPhoneKeyDown);
+      phoneInput.addEventListener('input', onPhoneInput, false);
+      phoneInput.addEventListener('paste', onPhonePaste, false);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+});
+"use strict";
+
+var menuButton = document.querySelector('.menu-btn');
+var menuContainer = document.querySelector('.menu-links');
+if (menuButton || menuContainer) {
+  menuButton.addEventListener('click', function () {
+    menuContainer.classList.toggle('active');
+  });
+}
 "use strict";
 
 var reviewsSlider = document.querySelector('.reviews .swiper');
@@ -133,6 +238,20 @@ if (reviewsSlider) {
     navigation: {
       nextEl: swiperNextEl,
       prevEl: swiperPrevEl
+    },
+    breakpoints: {
+      992: {
+        slidesPerView: 4
+      },
+      749: {
+        slidesPerView: 3
+      },
+      479: {
+        slidesPerView: 2
+      },
+      300: {
+        slidesPerView: 1
+      }
     }
   });
 }
