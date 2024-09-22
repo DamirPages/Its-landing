@@ -66,43 +66,6 @@ if (menuButton || menuContainer) {
 }
 "use strict";
 
-var reviewsSlider = document.querySelector('.reviews .swiper');
-if (reviewsSlider) {
-  var swiperPagination = document.querySelector('.reviews .swiper-pagination');
-  var swiperNextEl = document.querySelector('.reviews .swiper-button-next');
-  var swiperPrevEl = document.querySelector('.reviews .swiper-button-prev');
-  var swiper = new Swiper(reviewsSlider, {
-    slidesPerView: 4,
-    grid: {
-      rows: 2
-    },
-    spaceBetween: 20,
-    pagination: {
-      el: swiperPagination,
-      clickable: true
-    },
-    navigation: {
-      nextEl: swiperNextEl,
-      prevEl: swiperPrevEl
-    },
-    breakpoints: {
-      992: {
-        slidesPerView: 4
-      },
-      749: {
-        slidesPerView: 3
-      },
-      479: {
-        slidesPerView: 2
-      },
-      300: {
-        slidesPerView: 1
-      }
-    }
-  });
-}
-"use strict";
-
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
 function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
 function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
@@ -138,9 +101,10 @@ var reviewsItems = document.querySelectorAll('.reviews__item');
 if (reviewsSliderPopup && reviewsItems.length) {
   var slidersItems = '';
   reviewsItems.forEach(function (item, index) {
+    item.dataset.sliderId = index;
     var reviewImg = item.dataset.reviewImg;
     var logo = item.querySelector('.reviews__img img').getAttribute('src');
-    slidersItems += "<div class=\"swiper-slide\">\n                      <div class=\"reviews__item\" data-logo=\"".concat(logo, "\">\n                        <img src=\"").concat(reviewImg, "\" alt=\"\" />\n                      </div>\n                    </div>");
+    slidersItems += "<div class=\"swiper-slide\">\n                      <div class=\"reviews__item\" data-logo=\"".concat(logo, "\" data-slider-id=\"").concat(index, "\">\n                        <img src=\"").concat(reviewImg, "\" alt=\"\" />\n                      </div>\n                    </div>");
   });
   reviewsSliderPopup.querySelector('.swiper-wrapper').insertAdjacentHTML('beforeend', slidersItems);
   var swiperPagination = document.querySelector('.popup__reviews .swiper-pagination');
@@ -159,14 +123,15 @@ if (reviewsSliderPopup && reviewsItems.length) {
     },
     on: {
       init: function init() {
-        var logoUrl = reviewsSliderPopup.querySelector('.swiper-slide-active .reviews__item').dataset.logo;
+        var logoUrl = reviewsSliderPopup.querySelector('[data-slider-id="0"]').dataset.logo;
         var logoElement = document.querySelector('.reviews__logo img');
         logoElement.setAttribute('src', logoUrl);
       }
     }
   });
   swiperModal.on('slideChange', function () {
-    var logoUrl = reviewsSliderPopup.querySelector('.swiper-slide-active .reviews__item').dataset.logo;
+    var index = swiperModal.activeIndex;
+    var logoUrl = reviewsSliderPopup.querySelector('[data-slider-id="' + index + '"]').dataset.logo;
     var logoElement = document.querySelector('.reviews__logo img');
     logoElement.setAttribute('src', logoUrl);
   });
@@ -255,3 +220,40 @@ document.addEventListener('DOMContentLoaded', function () {
     _iterator.f();
   }
 });
+"use strict";
+
+var reviewsSlider = document.querySelector('.reviews .swiper');
+if (reviewsSlider) {
+  var swiperPagination = document.querySelector('.reviews .swiper-pagination');
+  var swiperNextEl = document.querySelector('.reviews .swiper-button-next');
+  var swiperPrevEl = document.querySelector('.reviews .swiper-button-prev');
+  var swiper = new Swiper(reviewsSlider, {
+    slidesPerView: 4,
+    grid: {
+      rows: 2
+    },
+    spaceBetween: 20,
+    pagination: {
+      el: swiperPagination,
+      clickable: true
+    },
+    navigation: {
+      nextEl: swiperNextEl,
+      prevEl: swiperPrevEl
+    },
+    breakpoints: {
+      992: {
+        slidesPerView: 4
+      },
+      749: {
+        slidesPerView: 3
+      },
+      479: {
+        slidesPerView: 2
+      },
+      300: {
+        slidesPerView: 1
+      }
+    }
+  });
+}
