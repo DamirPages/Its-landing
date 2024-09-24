@@ -8,6 +8,7 @@ if (caseSlider) {
   var swiper = new Swiper(caseSlider, {
     slidesPerView: 5,
     spaceBetween: 20,
+    loop: true,
     pagination: {
       el: swiperPagination,
       clickable: true
@@ -45,6 +46,7 @@ if (diplomsSlider) {
   var swiper = new Swiper(diplomsSlider, {
     slidesPerView: 1,
     spaceBetween: 20,
+    loop: true,
     pagination: {
       el: swiperPagination,
       clickable: true
@@ -55,6 +57,7 @@ if (diplomsSlider) {
     }
   });
 }
+Fancybox.bind("[data-fancybox]");
 "use strict";
 
 var menuButton = document.querySelector('.menu-btn');
@@ -62,6 +65,44 @@ var menuContainer = document.querySelector('.menu-links');
 if (menuButton || menuContainer) {
   menuButton.addEventListener('click', function () {
     menuContainer.classList.toggle('active');
+  });
+}
+"use strict";
+
+var reviewsSlider = document.querySelector('.reviews .swiper');
+if (reviewsSlider) {
+  var swiperPagination = document.querySelector('.reviews .swiper-pagination');
+  var swiperNextEl = document.querySelector('.reviews .swiper-button-next');
+  var swiperPrevEl = document.querySelector('.reviews .swiper-button-prev');
+  var swiper = new Swiper(reviewsSlider, {
+    slidesPerView: 4,
+    loop: true,
+    grid: {
+      rows: 2
+    },
+    spaceBetween: 20,
+    pagination: {
+      el: swiperPagination,
+      clickable: true
+    },
+    navigation: {
+      nextEl: swiperNextEl,
+      prevEl: swiperPrevEl
+    },
+    breakpoints: {
+      992: {
+        slidesPerView: 4
+      },
+      749: {
+        slidesPerView: 3
+      },
+      479: {
+        slidesPerView: 2
+      },
+      300: {
+        slidesPerView: 1
+      }
+    }
   });
 }
 "use strict";
@@ -220,40 +261,3 @@ document.addEventListener('DOMContentLoaded', function () {
     _iterator.f();
   }
 });
-"use strict";
-
-var reviewsSlider = document.querySelector('.reviews .swiper');
-if (reviewsSlider) {
-  var swiperPagination = document.querySelector('.reviews .swiper-pagination');
-  var swiperNextEl = document.querySelector('.reviews .swiper-button-next');
-  var swiperPrevEl = document.querySelector('.reviews .swiper-button-prev');
-  var swiper = new Swiper(reviewsSlider, {
-    slidesPerView: 4,
-    grid: {
-      rows: 2
-    },
-    spaceBetween: 20,
-    pagination: {
-      el: swiperPagination,
-      clickable: true
-    },
-    navigation: {
-      nextEl: swiperNextEl,
-      prevEl: swiperPrevEl
-    },
-    breakpoints: {
-      992: {
-        slidesPerView: 4
-      },
-      749: {
-        slidesPerView: 3
-      },
-      479: {
-        slidesPerView: 2
-      },
-      300: {
-        slidesPerView: 1
-      }
-    }
-  });
-}
