@@ -66,10 +66,10 @@
                 </div>
                 <nav class="nav">
                     <div class="nav__item">
-                        <a href="" class="nav__link">Запросить портфолио</a>
+                        <a href="#" class="nav__link" data-popup-open="popup__portfolio">Запросить портфолио</a>
                     </div>
                     <div class="nav__item">
-                        <a href="#" class="nav__link" data-popup-open="popup__brif">Отправить бриф</a>
+                        <a href="#" class="nav__link" data-popup-open="popup__file">Отправить бриф</a>
                     </div>
                     <div class="nav__item">
                         <a href="#" class="nav__link" data-popup-open="popup__qrs">Контакты</a>
@@ -109,12 +109,12 @@
                         Связаться с нами
 
                     </a>
-                    <a href="#" class="menu-link">
+                    <a href="#" class="menu-link" data-popup-open="popup__portfolio">
 
                         Запросить портфолио
 
                     </a>
-                    <a href="#" class="menu-link" data-popup-open="popup__brif">
+                    <a href="#" class="menu-link" data-popup-open="popup__file">
 
                         Отправить бриф
 
@@ -701,14 +701,6 @@
                                     <div class="reviews__title" data-popup-open="popup__reviews">Смотреть отзыв</div>
                                 </div>
                             </div>
-                            <div class="swiper-slide">
-                                <div class="reviews__item" data-review-img="static/img/content/review2-2.png">
-                                    <div class="reviews__img">
-                                        <img src="static/img/content/review-logo2.png" alt="Beiersdorf" />
-                                    </div>
-                                    <div class="reviews__title" data-popup-open="popup__reviews">Смотреть отзыв</div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <!-- If we need pagination -->
@@ -821,7 +813,7 @@
                         <input type="text" placeholder="Какая торговая сеть">
                         <input type="text" placeholder="E-mail">
                         <input type="text" placeholder="+7 (       )        -         -" data-tel-input>
-                        <button class="button">Отправить</button>
+                        <button class="button" data-popup-open="popup__success">Отправить</button>
                         <label class="checkbox">
                             <input type="checkbox" checked>
                             <div class="checkbox__icon"></div>
@@ -870,6 +862,142 @@
             39.9479 37.7866 39.9996 38.0446 39.9995C38.2962 40.0004 38.5455 39.9516 38.7779 39.8559C39.0104 39.7601 39.2215 39.6193 39.3989 
 
             39.4417C39.7646 39.0812 39.9726 38.5917 39.978 38.0793C39.9833 37.5669 39.7856 37.073 39.4275 36.705L23.0398 19.9864Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="popup__overlay"></div>
+        </div>
+        <div class="popup popup__portfolio">
+            <div class="popup__container">
+                <div class="popup__title">Заполните форму</div>
+                <div class="popup__mtitle">и получите портфолио</div>
+                <div class="popup-body">
+                    <form class="portfolio">
+                        <input type="text" placeholder="E-mail">
+                        <input type="text" placeholder="+7 (       )        -         -" data-tel-input>
+                        <button class="button" data-popup-open="popup__success">Отправить</button>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <div class="checkbox__icon"></div>
+                            <span>
+
+                          Настоящим подтверждаю, что я ознакомлен с политикой конфиденциальности и согласен на обработку персональных данных
+
+                          в соответствии с <a href="#" data-popup-open="popup__politic">указанным здесь текстом</a>
+
+                        </span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <div class="checkbox__icon"></div>
+                            <span>
+
+                          Я даю <a href="#" data-popup-open="popup__data">согласие на получение рассылки</a> о предложениях, информации о продуктах/услугах и иной рекламной информации от ООО «Информационные технологические системы» (ОГРН 1197746586971) путем отправки сообщений по всем указанным мною при регистрации каналам
+
+                        </span>
+                        </label>
+                    </form>
+                </div>
+
+                <div class="popup__close">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0398 19.9864L39.4249 3.26803C39.7829 2.90004 39.9808 
+
+              2.40615 39.9754 1.89375C39.9701 1.38134 39.7619 0.891656 39.3963 0.531184C39.2156 0.352952 39.0013 0.212247 
+
+              38.7657 0.117C38.5301 0.0217529 38.2778 -0.0260066 38.0235 -0.0235946C37.7693 -0.0211826 37.5181 0.0313916 
+
+              37.2843 0.131091C37.0506 0.230791 36.839 0.375522 36.6618 0.55715L20.3052 17.2497L3.27153 0.531184C3.09079 
+
+              0.353109 2.87647 0.212465 2.64087 0.117317C2.40527 0.022168 2.15309 -0.0255312 1.89887 -0.0231197C1.64465 -0.0207081 
+
+              1.39338 0.0318069 1.15964 0.131408C0.925905 0.231009 0.71432 0.375678 0.537011 0.55715C0.178638 0.924798 -0.019681 
+
+              1.41855 -0.0148047 1.93096C-0.00992853 2.44336 0.197695 2.93302 0.563001 3.29384L17.5719 19.9864L0.563001 36.679C0.197695 
+
+              37.0398 -0.00992853 37.5297 -0.0148047 38.0421C-0.019681 38.5545 0.178638 39.0482 0.537011 39.4159C0.71414 39.5977 0.925644 
+
+              39.7426 1.1594 39.8424C1.39316 39.9422 1.64455 39.9948 1.89887 39.9973C2.15318 39.9997 2.40541 39.9518 2.64103 39.8565C2.87666 
+
+              39.7612 3.09096 39.6201 3.27153 39.4417L20.3052 22.7233L36.6618 39.4159C36.8412 39.6006 37.056 39.7474 37.2936 39.8476C37.5312 
+
+              39.9479 37.7866 39.9996 38.0446 39.9995C38.2962 40.0004 38.5455 39.9516 38.7779 39.8559C39.0104 39.7601 39.2215 39.6193 39.3989 
+
+              39.4417C39.7646 39.0812 39.9726 38.5917 39.978 38.0793C39.9833 37.5669 39.7856 37.073 39.4275 36.705L23.0398 19.9864Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="popup__overlay"></div>
+        </div>
+        <div class="popup popup__file">
+            <div class="popup__container">
+                <div class="popup__title">Отправить бриф</div>
+                <div class="popup-body">
+                    <form class="file">
+                        <input type="text" placeholder="E-mail">
+                        <input type="text" placeholder="+7 (       )        -         -" data-tel-input>
+                        <label class="file-input">
+                            <input type="file">
+                            <span class="file-input-button button">Выберите файл</span>
+                            <span class="file-input-name"></span>
+                        </label>
+                        <button class="button" data-popup-open="popup__success">Отправить</button>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <div class="checkbox__icon"></div>
+                            <span>
+
+                                Настоящим подтверждаю, что я ознакомлен с политикой конфиденциальности и согласен на обработку
+
+                                персональных данных
+
+                                в соответствии с <a href="#" data-popup-open="popup__politic">указанным здесь текстом</a>
+
+                            </span>
+                        </label>
+                        <label class="checkbox">
+                            <input type="checkbox" checked>
+                            <div class="checkbox__icon"></div>
+                            <span>
+
+                                Я даю <a href="#" data-popup-open="popup__data">согласие на получение рассылки</a> о
+
+                                предложениях, информации о продуктах/услугах и иной рекламной информации от ООО «Информационные
+
+                                технологические системы» (ОГРН 1197746586971) путем отправки сообщений по всем указанным мною
+
+                                при регистрации каналам
+
+                            </span>
+                        </label>
+                    </form>
+                </div>
+
+                <div class="popup__close">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0398 19.9864L39.4249 3.26803C39.7829 2.90004 39.9808 
+
+              2.40615 39.9754 1.89375C39.9701 1.38134 39.7619 0.891656 39.3963 0.531184C39.2156 0.352952 39.0013 0.212247 
+
+              38.7657 0.117C38.5301 0.0217529 38.2778 -0.0260066 38.0235 -0.0235946C37.7693 -0.0211826 37.5181 0.0313916 
+
+              37.2843 0.131091C37.0506 0.230791 36.839 0.375522 36.6618 0.55715L20.3052 17.2497L3.27153 0.531184C3.09079 
+
+              0.353109 2.87647 0.212465 2.64087 0.117317C2.40527 0.022168 2.15309 -0.0255312 1.89887 -0.0231197C1.64465 -0.0207081 
+
+              1.39338 0.0318069 1.15964 0.131408C0.925905 0.231009 0.71432 0.375678 0.537011 0.55715C0.178638 0.924798 -0.019681 
+
+              1.41855 -0.0148047 1.93096C-0.00992853 2.44336 0.197695 2.93302 0.563001 3.29384L17.5719 19.9864L0.563001 36.679C0.197695 
+
+              37.0398 -0.00992853 37.5297 -0.0148047 38.0421C-0.019681 38.5545 0.178638 39.0482 0.537011 39.4159C0.71414 39.5977 0.925644 
+
+              39.7426 1.1594 39.8424C1.39316 39.9422 1.64455 39.9948 1.89887 39.9973C2.15318 39.9997 2.40541 39.9518 2.64103 39.8565C2.87666 
+
+              39.7612 3.09096 39.6201 3.27153 39.4417L20.3052 22.7233L36.6618 39.4159C36.8412 39.6006 37.056 39.7474 37.2936 39.8476C37.5312 
+
+              39.9479 37.7866 39.9996 38.0446 39.9995C38.2962 40.0004 38.5455 39.9516 38.7779 39.8559C39.0104 39.7601 39.2215 39.6193 39.3989 
+
+              39.4417C39.7646 39.0812 39.9726 38.5917 39.978 38.0793C39.9833 37.5669 39.7856 37.073 39.4275 36.705L23.0398 19.9864Z"></path>
                     </svg>
                 </div>
             </div>
@@ -1437,13 +1565,11 @@
                     </p>
                     <p style='margin-top:0cm;margin-right:0cm;margin-left:0cm;font-size:11.0pt;'><span style='font-size:16px;color:black;'> </span>
                     </p>
-                    <p style='margin-top:0cm;margin-right:0cm;margin-left:0cm;font-size:11.0pt;'><span style='font-size:16px;color:black;'>ООО &laquo;Информационные технологические системы&raquo;</span>
-                    </p>
-                    <p style='margin-top:0cm;margin-right:0cm;margin-left:0cm;font-size:11.0pt;'><span style='font-size:16px;color:black;'>ОГРН 1197746586971</span>
-                    </p>
-                    <p style='margin-top:0cm;margin-right:0cm;margin-left:0cm;font-size:11.0pt;'><span style='font-size:16px;color:black;'>ИНН 7708360557 КПП 770801001</span>
-                    </p>
-                    <p style='margin-top:0cm;margin-right:0cm;margin-left:0cm;font-size:11.0pt;'><span style='font-size:16px;color:black;'>107045 Россия, Москва, ул. Сретенка д.12</span>
+                    <p style='margin-top:0cm;margin-right:0cm;margin-left:0cm;font-size:11.0pt;'>
+                        <span style='font-size:16px;color:black;display: block;'>ООО &laquo;Информационные технологические системы&raquo;</span>
+                        <span style='font-size:16px;color:black;display: block;'>ОГРН 1197746586971</span>
+                        <span style='font-size:16px;color:black;display: block;'>ИНН 7708360557 КПП 770801001</span>
+                        <span style='font-size:16px;color:black;display: block;'>107045 Россия, Москва, ул. Сретенка д.12</span>
                     </p>
                 </div>
 
@@ -1539,6 +1665,42 @@
               39.9479 37.7866 39.9996 38.0446 39.9995C38.2962 40.0004 38.5455 39.9516 38.7779 39.8559C39.0104 39.7601 39.2215 39.6193 39.3989 
 
               39.4417C39.7646 39.0812 39.9726 38.5917 39.978 38.0793C39.9833 37.5669 39.7856 37.073 39.4275 36.705L23.0398 19.9864Z"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="popup__overlay"></div>
+        </div>
+        <div class="popup popup__success">
+            <div class="popup__container">
+                <div class="popup-body">
+                    Ваш запрос отпарвлен. Вернемся к Вам с ответом, как можно скорее!
+                </div>
+
+                <div class="popup__close">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M23.0398 19.9864L39.4249 3.26803C39.7829 2.90004 39.9808 
+
+                2.40615 39.9754 1.89375C39.9701 1.38134 39.7619 0.891656 39.3963 0.531184C39.2156 0.352952 39.0013 0.212247 
+
+                38.7657 0.117C38.5301 0.0217529 38.2778 -0.0260066 38.0235 -0.0235946C37.7693 -0.0211826 37.5181 0.0313916 
+
+                37.2843 0.131091C37.0506 0.230791 36.839 0.375522 36.6618 0.55715L20.3052 17.2497L3.27153 0.531184C3.09079 
+
+                0.353109 2.87647 0.212465 2.64087 0.117317C2.40527 0.022168 2.15309 -0.0255312 1.89887 -0.0231197C1.64465 -0.0207081 
+
+                1.39338 0.0318069 1.15964 0.131408C0.925905 0.231009 0.71432 0.375678 0.537011 0.55715C0.178638 0.924798 -0.019681 
+
+                1.41855 -0.0148047 1.93096C-0.00992853 2.44336 0.197695 2.93302 0.563001 3.29384L17.5719 19.9864L0.563001 36.679C0.197695 
+
+                37.0398 -0.00992853 37.5297 -0.0148047 38.0421C-0.019681 38.5545 0.178638 39.0482 0.537011 39.4159C0.71414 39.5977 0.925644 
+
+                39.7426 1.1594 39.8424C1.39316 39.9422 1.64455 39.9948 1.89887 39.9973C2.15318 39.9997 2.40541 39.9518 2.64103 39.8565C2.87666 
+
+                39.7612 3.09096 39.6201 3.27153 39.4417L20.3052 22.7233L36.6618 39.4159C36.8412 39.6006 37.056 39.7474 37.2936 39.8476C37.5312 
+
+                39.9479 37.7866 39.9996 38.0446 39.9995C38.2962 40.0004 38.5455 39.9516 38.7779 39.8559C39.0104 39.7601 39.2215 39.6193 39.3989 
+
+                39.4417C39.7646 39.0812 39.9726 38.5917 39.978 38.0793C39.9833 37.5669 39.7856 37.073 39.4275 36.705L23.0398 19.9864Z"></path>
                     </svg>
                 </div>
             </div>
