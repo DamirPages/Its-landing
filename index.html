@@ -479,7 +479,6 @@
                                 Персональный подход к каждому клиенту и проекту. Выполняем задачи по проектам 24/7.
                             </div>
                         </div>
-                        <div class="adv__blur"></div>
                     </div>
                     <div class="adv__item">
                         <div class="adv__num">
@@ -493,7 +492,6 @@
                                 Мы умеем запускать проекты за сутки, мы ставим результаты и эффективность выше систем и процессов.
                             </div>
                         </div>
-                        <div class="adv__blur"></div>
                     </div>
                     <div class="adv__item">
                         <div class="adv__num">
@@ -507,7 +505,6 @@
                                 Мы всегда предлагаем только эффективные решения. Мы можем нестандартно решить даже самую сложную задачу.
                             </div>
                         </div>
-                        <div class="adv__blur"></div>
                     </div>
                 </div>
             </div>
@@ -596,9 +593,6 @@
                         <img src="static/img/content/arrow.svg" alt="Вперед">
                     </div>
                 </div>
-            </div>
-            <div class="case__bg">
-                <img src="static/img/content/case.jpg" alt="Кейсы" />
             </div>
         </div>
         <div class="clients" id="clients">
@@ -796,7 +790,6 @@
                         <div class="copyright__links">
                             <span class="link-style" data-popup-open="popup__politic">Политика конфиденциальности</span>
                             <span class="link-style" data-popup-open="popup__data">О персональных данных</span>
-                            <span class="link-style">Договор оферты</span>
                         </div>
                     </div>
                 </div>
@@ -808,14 +801,20 @@
                 <div class="popup__mtitle">и получите быстрый расчет</div>
                 <div class="popup-body">
                     <form class="brif">
-                        <input type="text" placeholder="Количество SKU">
-                        <input type="text" placeholder="Какая продукция">
-                        <input type="text" placeholder="Какая торговая сеть">
-                        <input type="text" placeholder="E-mail">
-                        <input type="text" placeholder="+7 (       )        -         -" data-tel-input>
-                        <button class="button" data-popup-open="popup__success">Отправить</button>
+                        <input type="hidden" name="form" value="Быстрый расчет">
+                        <input type="text" name="col-sku" placeholder="Количество SKU" data-required>
+                        <span class="error-message">Необходимо заполнить поле</span>
+                        <input type="text" name="product" placeholder="Какая продукция" data-required>
+                        <span class="error-message">Необходимо заполнить поле</span>
+                        <input type="text" name="company" placeholder="Какая торговая сеть" data-required>
+                        <span class="error-message">Необходимо заполнить поле</span>
+                        <input type="text" name="email" placeholder="Введите ваш E-mail" data-input-mail>
+                        <span class="error-message">Необходимо заполнить поле</span>
+                        <input type="text" name="tel" placeholder="+7 (       )        -         -" data-tel-input>
+                        <span class="error-message">Необходимо заполнить поле</span>
+                        <button class="button" type="submit">Отправить</button>
                         <label class="checkbox">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" checked data-required>
                             <div class="checkbox__icon"></div>
                             <span>
 
@@ -825,8 +824,9 @@
 
                       </span>
                         </label>
+                        <span class="error-message">Необходимо принять</span>
                         <label class="checkbox">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" checked data-required>
                             <div class="checkbox__icon"></div>
                             <span>
 
@@ -834,6 +834,7 @@
 
                       </span>
                         </label>
+                        <span class="error-message">Необходимо принять</span>
                     </form>
                 </div>
 
@@ -869,15 +870,19 @@
         </div>
         <div class="popup popup__portfolio">
             <div class="popup__container">
+                <input type="hidden" name="form" value="Запросить портфолио">
                 <div class="popup__title">Заполните форму</div>
                 <div class="popup__mtitle">и получите портфолио</div>
                 <div class="popup-body">
                     <form class="portfolio">
-                        <input type="text" placeholder="E-mail">
-                        <input type="text" placeholder="+7 (       )        -         -" data-tel-input>
-                        <button class="button" data-popup-open="popup__success">Отправить</button>
+                        <input type="text" name="email" placeholder="Введите ваш E-mail" data-input-mail>
+                        <span class="error-message">Необходимо заполнить поле</span>
+                        <input type="text" name="tel" placeholder="+7 (       )        -         -" data-tel-input>
+                        <span class="error-message">Необходимо заполнить поле</span>
+
+                        <button class="button" type="submit">Отправить</button>
                         <label class="checkbox">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" checked data-required>
                             <div class="checkbox__icon"></div>
                             <span>
 
@@ -887,8 +892,10 @@
 
                         </span>
                         </label>
+                        <span class="error-message">Необходимо принять</span>
+
                         <label class="checkbox">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" checked data-required>
                             <div class="checkbox__icon"></div>
                             <span>
 
@@ -896,6 +903,8 @@
 
                         </span>
                         </label>
+                        <span class="error-message">Необходимо принять</span>
+
                     </form>
                 </div>
 
@@ -934,16 +943,20 @@
                 <div class="popup__title">Отправить бриф</div>
                 <div class="popup-body">
                     <form class="file">
-                        <input type="text" placeholder="E-mail">
-                        <input type="text" placeholder="+7 (       )        -         -" data-tel-input>
+                        <input type="hidden" name="form" value="Отправить бриф">
+                        <input type="text" name="email" placeholder="Введите ваш E-mail" data-input-mail>
+                        <span class="error-message">Необходимо заполнить поле</span>
+                        <input type="text" name="tel" placeholder="+7 (       )        -         -" data-tel-input>
+                        <span class="error-message">Необходимо заполнить поле</span>
                         <label class="file-input">
-                            <input type="file">
+                            <input type="file" name="file" data-required>
                             <span class="file-input-button button">Выберите файл</span>
                             <span class="file-input-name"></span>
                         </label>
-                        <button class="button" data-popup-open="popup__success">Отправить</button>
+                        <span class="error-message">Необходимо загрузить файл</span>
+                        <button class="button" type="submit">Отправить</button>
                         <label class="checkbox">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" checked data-required>
                             <div class="checkbox__icon"></div>
                             <span>
 
@@ -955,8 +968,9 @@
 
                             </span>
                         </label>
+                        <span class="error-message">Необходимо принять</span>
                         <label class="checkbox">
-                            <input type="checkbox" checked>
+                            <input type="checkbox" checked data-required>
                             <div class="checkbox__icon"></div>
                             <span>
 
@@ -970,6 +984,7 @@
 
                             </span>
                         </label>
+                        <span class="error-message">Необходимо принять</span>
                     </form>
                 </div>
 

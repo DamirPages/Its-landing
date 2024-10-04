@@ -60,15 +60,6 @@ if (diplomsSlider) {
 Fancybox.bind("[data-fancybox]");
 "use strict";
 
-var menuButton = document.querySelector('.menu-btn');
-var menuContainer = document.querySelector('.menu-links');
-if (menuButton || menuContainer) {
-  menuButton.addEventListener('click', function () {
-    menuContainer.classList.toggle('active');
-  });
-}
-"use strict";
-
 var reviewsSlider = document.querySelector('.reviews .swiper');
 if (reviewsSlider) {
   var swiperPagination = document.querySelector('.reviews .swiper-pagination');
@@ -117,6 +108,15 @@ reviewsButtons.forEach(function (item) {
     }
   });
 });
+"use strict";
+
+var menuButton = document.querySelector('.menu-btn');
+var menuContainer = document.querySelector('.menu-links');
+if (menuButton || menuContainer) {
+  menuButton.addEventListener('click', function () {
+    menuContainer.classList.toggle('active');
+  });
+}
 "use strict";
 
 function _createForOfIteratorHelper(r, e) { var t = "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (!t) { if (Array.isArray(r) || (t = _unsupportedIterableToArray(r)) || e && r && "number" == typeof r.length) { t && (r = t); var _n = 0, F = function F() {}; return { s: F, n: function n() { return _n >= r.length ? { done: !0 } : { done: !1, value: r[_n++] }; }, e: function e(r) { throw r; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var o, a = !0, u = !1; return { s: function s() { t = t.call(r); }, n: function n() { var r = t.next(); return a = r.done, r; }, e: function e(r) { u = !0, o = r; }, f: function f() { try { a || null == t.return || t.return(); } finally { if (u) throw o; } } }; }
@@ -281,6 +281,97 @@ fileInputs.forEach(function (item) {
       item.querySelector('.file-input-name').textContent = e.target.files[0].name;
     } else {
       item.querySelector('.file-input-name').textContent = '';
+    }
+  });
+});
+var validateEmail = function validateEmail(email) {
+  return String(email).toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+};
+function validateForm(form) {
+  var error = false;
+  var mailInputs = form.querySelectorAll('[data-input-mail]');
+  var telInputs = form.querySelectorAll('[data-tel-input]');
+  var requiredInputs = form.querySelectorAll('[data-required]');
+  var errorElements = form.querySelectorAll('.error');
+  errorElements.forEach(function (item) {
+    return item.classList.remove('error');
+  });
+  mailInputs.forEach(function (input) {
+    var value = input.value;
+    if (!validateEmail(value)) {
+      error = true;
+      input.classList.add('error');
+      input.addEventListener('input', function () {
+        input.classList.remove('error');
+      }, {
+        once: true
+      });
+    }
+  });
+  telInputs.forEach(function (input) {
+    if (input.value.trim().length < 11) {
+      error = true;
+      input.classList.add('error');
+      input.addEventListener('input', function () {
+        input.classList.remove('error');
+      }, {
+        once: true
+      });
+    }
+  });
+  requiredInputs.forEach(function (input) {
+    if (input.getAttribute('type') === 'checkbox') {
+      console.log('checkbox');
+      console.log(input);
+      if (input.checked === false) {
+        error = true;
+        input.closest('.checkbox').classList.add('error');
+        input.addEventListener('change', function () {
+          input.closest('.checkbox').classList.remove('error');
+        }, {
+          once: true
+        });
+      }
+    } else if (input.getAttribute('type') === 'file') {
+      if (!input.value.trim().length) {
+        error = true;
+        input.closest('.file-input').classList.add('error');
+        input.addEventListener('change', function () {
+          input.closest('.file-input').classList.remove('error');
+        }, {
+          once: true
+        });
+      }
+    } else {
+      if (!input.value.trim().length) {
+        error = true;
+        input.classList.add('error');
+        input.addEventListener('input', function () {
+          input.classList.remove('error');
+        }, {
+          once: true
+        });
+      }
+    }
+  });
+  return error;
+}
+var popupForms = document.querySelectorAll('.popup form');
+popupForms.forEach(function (form) {
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!validateForm(form)) {
+      var formData = new FormData(form);
+      form.classList.add('loading');
+      fetch('/sendmail.php', {
+        method: 'POST',
+        body: formData
+      }).then(function (response) {
+        if (response.ok) {
+          document.querySelector('.popup__success').classList.add('active');
+        }
+        form.classList.remove('loading');
+      });
     }
   });
 });
